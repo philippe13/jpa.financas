@@ -27,8 +27,6 @@ public class Movimentacao {
 	
 	@ManyToOne
 	private Conta conta;
-
-	
 	
 	
 	public Conta getConta() {
