@@ -22,11 +22,20 @@ public class Movimentacao {
 	private BigDecimal valor;	
 	@Enumerated(EnumType.STRING)
 	private TipoMovimentacao tipoMovimentacao;	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Calendar data;
+	private String descricao;
 	
 	@ManyToOne
 	private Conta conta;
+	
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 	
 	
 	public Conta getConta() {

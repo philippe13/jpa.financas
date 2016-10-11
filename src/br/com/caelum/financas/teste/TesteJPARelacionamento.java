@@ -1,5 +1,6 @@
 package br.com.caelum.financas.teste;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 
 import javax.persistence.EntityManager;
@@ -8,6 +9,7 @@ import javax.persistence.Persistence;
 
 import br.com.caelum.financa.modelo.Conta;
 import br.com.caelum.financa.modelo.Movimentacao;
+import br.com.caelum.financa.modelo.TipoMovimentacao;
 import br.com.caelum.financa.util.JPAUtil;
 
 public class TesteJPARelacionamento {
@@ -24,20 +26,27 @@ public class TesteJPARelacionamento {
 
 		Movimentacao movimentacao = new Movimentacao();
 		movimentacao.setData(Calendar.getInstance());
-		movimentacao.setDescricao();
+		movimentacao.setDescricao("Conta de luz");
+		movimentacao.setTipoMovimentacao(TipoMovimentacao.SAIDA);
+		movimentacao.setValor(new BigDecimal("134.9"));
+		
+		movimentacao.setConta(conta);
+		
+		
 		EntityManager em = new JPAUtil().getEntityManager();
 		
 	
-		em.getTransaction().begin();
-		
-		em.persist(conta);
-		
+			em.getTransaction().begin();
 			
-		em.getTransaction().commit();
+			em.persist(conta);
+			
+			em.persist(movimentacao);
+			
+				
+			em.getTransaction().commit();
 		em.close();
 
-		double fim = System.currentTimeMillis();
-		System.out.println("Executa em: " + (fim - inicio) / 1000 + "s");
+		
 
 	}
 }

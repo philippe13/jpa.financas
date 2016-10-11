@@ -13,24 +13,30 @@ public class TesteJPA {
 
 		double inicio = System.currentTimeMillis();
 
-		/*Conta conta = new Conta();
-		conta.setTitular("Amanda");
+		Conta conta = new Conta();
+		conta.setTitular("Rita");
 		conta.setBanco("Bradesco");
-		conta.setAgencia("777");
-		conta.setNumero("11111");*/
+		conta.setAgencia("222");
+		conta.setNumero("44544");
 
 		EntityManager em = new JPAUtil().getEntityManager();
 		
-	
-		em.getTransaction().begin();
-
-			// em.persist(conta);
-			Conta conta = em.find(Conta.class, 1);
 		
-			System.out.println(conta.getTitular());
+		em.getTransaction().begin();
+			//persist estado transient
+			//em.persist(conta);
+		
+			//só é possível remover se a entidade esta no estado managed, para isso usando o find
+			/*Conta contaARemover = em.find(Conta.class, 1);
+			em.remove(contaARemover);*/
+		
+			em.persist(conta);
 			
-			conta.setTitular("Pedro Pedrinho");
-			/*em.merge(conta);*/
+			//conta.setTitular("Philippe");
+			
+		/*	conta.setTitular("Pedro Pedrinho");
+		 * merge estado detached
+			em.merge(conta);*/
 			
 			em.getTransaction().commit();
 		em.close();
