@@ -18,9 +18,9 @@ public class TesteConsulta {
 		EntityManager em = new JPAUtil().getEntityManager();
 		
 		Conta conta = new Conta();
-		conta.setId(4);
+		conta.setId(1);
 		
-		Query query = (Query) em.createQuery("select m from Movimentacao m where m.conta.id=:pConta");
+		Query query = em.createQuery("select m from Movimentacao m where m.conta.id=:pConta");
 		
 		/*Positional Parameter Notation
 		query.setParameter(1, conta);*/
