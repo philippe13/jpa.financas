@@ -26,7 +26,7 @@ public class Movimentacao {
 	private Calendar data;
 	private String descricao;
 	
-	@ManyToOne
+	@ManyToOne()
 	private Conta conta;
 	
 	public String getDescricao() {
