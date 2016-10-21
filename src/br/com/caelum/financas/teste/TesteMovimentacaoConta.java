@@ -19,7 +19,7 @@ public class TesteMovimentacaoConta {
 		
 		System.out.println("Titular da conta: " + movimentacao.getConta().getTitular());*/
 	
-	    /*Conta conta = em.find(Conta.class, 4);
+	    /*Conta conta = em.find(Conta.class, 4);R
 		System.out.println(conta.getMovimentacoes().size());*/
 		
 		Query query = em.createQuery("select c from Conta c join fetch c.movimentacoes");

@@ -13,6 +13,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.NamedQuery;
+
+@NamedQuery(name="mediaDaContaPeloTipoMovimentacao",
+		query = "select avg(m.valor) from Movimentacao m where m.conta=:pConta and m.tipoMovimentacao = p:Tipo")
 @Entity
 public class Movimentacao {
 
